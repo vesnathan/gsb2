@@ -1,0 +1,43 @@
+.mainButton{
+    background:   rgba(239,103,103,1);
+    display: inline-block;
+    width: calc(100% / 3); 
+    min-height: 100px; 
+    outline: 1px solid rgb(253, 123, 123);
+    color:rgba(255,255,255,.5);
+    text-align: center;
+    vertical-align: center;
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+  }
+
+  .mainButton img {
+    width: 70px;
+    display: block;
+    opacity: 50%;
+    padding-top: 10px;
+    margin: auto;
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+  }
+  
+  .mainButton:hover {
+    background:   rgba(241, 108, 108, 1);
+    color:        rgba(255,255,255,1);
+  }
+
+  .mainButton:hover img {
+    opacity: 100%;
+}
+.mainButton.active img {
+    opacity: 100%;
+}
+  
+  .active {
+    background:   rgb(243, 115, 115);
+    color:        rgba(255,255,255,1);
+  }
