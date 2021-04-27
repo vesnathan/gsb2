@@ -14,10 +14,11 @@ body {
 .mainButtonContainer {
   
   background: rgba(239,103,103,1);
+  min-height: 100px;
 }
 .secondaryButtons {
   background: rgba(255,209,101,1);
-  min-height: 400px;
+  min-height: 100px;
 }
 
 .controlButtons {

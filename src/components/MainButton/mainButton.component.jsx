@@ -8,9 +8,9 @@ const handleMainButtonClick = (e) => {
   }
 
 const MainButton = (props) => (
-    <div id={props.buttonText} className={"mainButton" + (props.buttonStatus? ' active':'') } onClick={(e) => handleMainButtonClick(e)} >
-        <img alt={props.buttonText +' icon'} src={props.buttonIcon} />
-        {props.buttonText}
+    <div id={'mainButtonDiv-'+props.mainButtonId} className={"mainButton" + ((props.mainButtonSelected===props.mainButtonId) ? ' active':'') } onClick={(e) => handleMainButtonClick(e)} >
+        <img id={'mainButtonImg-'+props.mainButtonId} alt={props.mainButtonText +' icon'} src={props.mainButtonIcon} />
+        <p id={'mainButtonName-'+props.mainButtonId} >{props.mainButtonText}</p>
     </div>
 );
 

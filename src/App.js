@@ -17,24 +17,28 @@ class App extends React.Component {
     super();
     this.state = {
       players: [
-        { id: "1", name: "Team 1", score: 0, background: '', buttonStatus: true },
-        { id: "2", name: "Team 2", score: 0, background: '', buttonStatus: false  },
-        { id: "3", name: "Team 3", score: 0, background: '', buttonStatus: false  },
-        { id: "4", name: "Team 4", score: 0, background: '', buttonStatus: false  },
-        { id: "5", name: "Team 5", score: 0, background: '', buttonStatus: false  },
-        { id: "6", name: "Team 6", score: 0, background: '', buttonStatus: false  },
-        { id: "7", name: "Team 7", score: 0, background: '', buttonStatus: false  },
-        { id: "8", name: "Team 8", score: 0, background: '', buttonStatus: false  },
-        { id: "9", name: "Team 9", score: 0, background: '', buttonStatus: false  }
+        { id: 0, name: "Team 1", score: 0, background: '' },
+        { id: 1, name: "Team 2", score: 0, background: '' },
+        { id: 2, name: "Team 3", score: 0, background: '' },
+        { id: 3, name: "Team 4", score: 0, background: '' },
+        { id: 4, name: "Team 5", score: 0, background: '' },
+        { id: 5, name: "Team 6", score: 0, background: '' },
+        { id: 6, name: "Team 7", score: 0, background: '' },
+        { id: 7, name: "Team 8", score: 0, background: '' },
+        { id: 8, name: "Team 9", score: 0, background: '' }
       ],
-      settings: [],
+      settings: {
+        mainButtonSelected: 0,
+        playerButtonSelected: 0,
+
+      },
       mainButtons: [
-        { id: 1, text: 'PLAYERS', status: true, icon: PlayersIcon },
-        { id: 2, text: 'SCORING', status: false, icon: ScoringIcon },
-        { id: 3, text: 'BUTTONS', status: false, icon: ButtonsIcon },
-        { id: 4, text: 'SETTINGS', status: false, icon: SettingsIcon },
-        { id: 5, text: 'SAVE', status: false, icon: SaveIcon },
-        { id: 6, text: 'LOAD', status: false, icon: LoadIcon }
+        { id: 0, text: 'PLAYERS',  icon: PlayersIcon },
+        { id: 1, text: 'SCORING',  icon: ScoringIcon },
+        { id: 2, text: 'BUTTONS',  icon: ButtonsIcon },
+        { id: 3, text: 'SETTINGS',  icon: SettingsIcon },
+        { id: 4, text: 'SAVE',  icon: SaveIcon },
+        { id: 5, text: 'LOAD',  icon: LoadIcon }
       ]
     }
     
@@ -45,56 +49,72 @@ class App extends React.Component {
   
       <div className="mainContainer">
         <Grid container>
-          <Grid item={true} xs={12} sm={4}>       
+          <Grid item={true} xs={12} sm={4}> 
             <div className="mainButtonContainer">
-              <Grid container >
-                {
-                  this.state.mainButtons.map(button => (
-                    <Grid item={true} xs={4} sm={12} md={6} lg={4} xl={3}>
-                      <MainButton key={button.id} buttonId={button.id} buttonText={button.text} buttonStatus={button.status} buttonIcon={button.icon} />
-                    </Grid>
-                  ))
-                }
-              </Grid>
+              <Hidden smDown>    
+                  <Grid container >
+                    {
+                      this.state.mainButtons.map(button => (
+                        <Grid item={true} xs={4} sm={12} md={6} lg={4} xl={3}>
+                          <MainButton key={'mainButton-'+button.id} mainButtonId={button.id} mainButtonText={button.text} mainButtonSelected={this.state.settings.mainButtonSelected} mainButtonIcon={button.icon} />
+                        </Grid>
+                      ))
+                    }
+                  </Grid>
+              </Hidden>
+              <Hidden mdUp>
+Main Buttons Drop Down
+              </Hidden>
             </div>
+            <Grid  item={true} xs={12}  >
+              <div className="secondaryButtons">
+
+              </div>
+            </Grid>
           </Grid>
           
           <Grid  item={true} xs={12} sm={8}>
+          
             <div className="mainPage">
-              {/* whenClicked is a property not an event, per se. */}
-            <Grid container >
-             {
-                this.state.players.map(player => (
-                  <Grid item={true} xs={4} sm={4} md={2} lg={2} xl={2}>
-                  <Player key={player.id} playerId={player.id} playerName={player.name} playerButtonStatus={player.buttonStatus} />
-                  </Grid>
-                ))
-              }
-              </Grid>
+              <Hidden smDown> 
+                <Grid container>
+                {
+                  this.state.players.map(player => (
+                    <Grid item={true} xs={4} sm={4} md={2} lg={2} xl={2}>
+                      <Player key={'playerButton-'+player.id} playerButtonId={player.id} playerButtonName={player.name} playerButtonSelected={this.state.settings.playerButtonSelected} playerBackground={player.background}/>
+                    </Grid>
+                  ))
+                }
+                </Grid>
+              </Hidden>              
+              <Hidden mdUp>
+Players Drop Down
+              </Hidden>
             </div>
+            
           </Grid>
-          <Grid  item={true} xs={12} sm={4} >
-            <div className="controlButtons">
+            <Grid  item={true} xs={12} sm={4} >
+              <div className="controlButtons">
 
-              </div>
-          </Grid>
-          <Hidden xsDown >
-            <Grid  item={true} sm={4} lg={6}>
-              <div className="greyBar">
-
-              </div>
+                </div>
             </Grid>
-            <Grid  item={true} sm={2} lg={1}>
-              <div className="darkBlueButton">
+            <Hidden xsDown>
+              <Grid  item={true} xs={12} sm={4} lg={6}>
+                <div className="greyBar">
 
-              </div>
-            </Grid>
-            <Grid  item={true} sm={2} lg={1}>
-              <div className="lightBlueButton">
+                  </div>
+              </Grid>
+              <Grid  item={true} xs={12} sm={2}  lg={1}>
+                <div className="darkBlueButton">
 
-              </div>
-            </Grid>
-          </Hidden>
+                  </div>
+              </Grid>
+              <Grid  item={true} xs={12} sm={2}  lg={1}>
+                <div className="lightBlueButton">
+
+                  </div>
+              </Grid>
+            </Hidden>
         </Grid>
       </div>
   
