@@ -79,17 +79,17 @@ class App extends React.Component {
               </div>
           </Grid>
           <Hidden xsDown >
-            <Grid  item={true} sm={4} md={4} lg={6}>
+            <Grid  item={true} sm={4} lg={6}>
               <div className="greyBar">
 
               </div>
             </Grid>
-            <Grid  item={true} sm={2} md={2} lg={1}>
+            <Grid  item={true} sm={2} lg={1}>
               <div className="darkBlueButton">
 
               </div>
             </Grid>
-            <Grid  item={true} sm={2} md={2} lg={1}>
+            <Grid  item={true} sm={2} lg={1}>
               <div className="lightBlueButton">
 
               </div>
