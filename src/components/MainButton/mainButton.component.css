@@ -1,7 +1,7 @@
 .mainButton{
     background:   rgba(239,103,103,1);
     display: inline-block;
-    width: calc(100% / 3); 
+    width: 100%;
     min-height: 100px; 
     outline: 1px solid rgb(253, 123, 123);
     color:rgba(255,255,255,.5);
@@ -11,9 +11,9 @@
     -o-transition: all .2s ease-in;
     -webkit-transition: all .2s ease-in;
     transition: all .2s ease-in;
-  }
+}
 
-  .mainButton img {
+.mainButton img {
     width: 70px;
     display: block;
     opacity: 50%;
@@ -23,21 +23,24 @@
     -o-transition: all .2s ease-in;
     -webkit-transition: all .2s ease-in;
     transition: all .2s ease-in;
-  }
+}
   
-  .mainButton:hover {
+.mainButton:hover {
     background:   rgba(241, 108, 108, 1);
     color:        rgba(255,255,255,1);
-  }
+}
 
-  .mainButton:hover img {
+.mainButton:hover img {
     opacity: 100%;
+    transform: scale(1.1);
 }
 .mainButton.active img {
     opacity: 100%;
+    
+    transform: scale(1.1);
 }
   
-  .active {
+.mainButton.active {
     background:   rgb(243, 115, 115);
     color:        rgba(255,255,255,1);
-  }
+}

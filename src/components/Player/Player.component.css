@@ -2,10 +2,9 @@
 
 .playerButton{
     background:   rgb(255, 255, 255);
-    display: inline-block;
-    width: calc(100% / 6); 
+    width: 100%;
+    display: inline-block; 
     min-height: 100px; 
-    outline: 1px solid rgb(255, 255, 255);
     color:rgba(0, 0, 0, 0.5);
     text-align: center;
     vertical-align: center;
@@ -33,13 +32,16 @@
 }
 
 .playerButton:hover img {
-    opacity: 100%;
     transform: scale(1.1);
-    filter: brightness(.2);
+    filter: brightness(.4);
 }
+
+.playerButton.active {
+    color:        rgb(0, 0, 0);
+}
+
 .playerButton.active img {
-    opacity: 100%;
-    
+    filter: brightness(.4);
     transform: scale(1.1);
 }
   

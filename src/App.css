@@ -11,7 +11,10 @@ body {
   margin-top: 50px;
 }
 
-
+.mainButtonContainer {
+  
+  background: rgba(239,103,103,1);
+}
 .secondaryButtons {
   background: rgba(255,209,101,1);
   min-height: 400px;

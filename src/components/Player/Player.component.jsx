@@ -4,8 +4,8 @@ import './Player.component.css';
 
 const Player = (props) => {
     return (
-        <div className='playerButton'>
-            <img alt="player" src={PlayerIcon} />
+        <div className={'playerButton' + (props.playerButtonStatus ? ' active':'')}>
+            <img alt={props.playerName + ' Settings'} src={PlayerIcon} />
             { props.playerName }
         </div>
     );
