@@ -1,23 +1,50 @@
-
-
-.playerButton{
-    background:   rgb(255, 255, 255);
+.playerButton {
     width: 100%;
     display: inline-block; 
-    min-height: 100px; 
-    color:rgba(0, 0, 0, 0.5);
+    height: 140px; 
+    overflow: hidden;
+    color: rgba(255,255,255,1);
     text-align: center;
     vertical-align: center;
     -moz-transition: all .2s ease-in;
     -o-transition: all .2s ease-in;
     -webkit-transition: all .2s ease-in;
     transition: all .2s ease-in;
+    outline: 1px solid rgb(252, 215, 131);
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.playerButton:focus-visible {
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: rgb(252, 212, 118);
+    opacity: 1;
+    outline: 1px solid rgb(250, 229, 179);
+    
+}
+
+.playerButton:hover {
+    color: rgb(255, 255, 255);
+    background: rgb(252, 212, 118);
+    opacity: 1;
+    outline: 1px solid rgb(250, 229, 179);
+}
+
+.playerButton.active {
+    color: rgb(255, 255, 255);
+    background: rgb(252, 212, 118);
+    opacity: 1;
+    outline: 1px solid rgb(250, 229, 179);
 }
 
 .playerButton img {
+    
+    transform: scale(.9); 
     width: 70px;
     display: block;
-    filter: brightness(.7);
+    opacity: .5;
     padding-top: 10px;
     margin: auto;
     -moz-transition: all .2s ease-in;
@@ -25,23 +52,19 @@
     -webkit-transition: all .2s ease-in;
     transition: all .2s ease-in;
 }
-  
-.playerButton:hover {
-    background:   rgb(255, 255, 255);
-    color:        rgb(0, 0, 0);
+
+.playerButton:focus-visible img {
+    transform: scale(1.0);         
+    opacity: 1;
 }
 
 .playerButton:hover img {
-    transform: scale(1.1);
-    filter: brightness(.4);
-}
-
-.playerButton.active {
-    color:        rgb(0, 0, 0);
+    transform: scale(1.0);      
+    opacity: 1; 
 }
 
 .playerButton.active img {
-    filter: brightness(.4);
-    transform: scale(1.1);
+    opacity: 1;
+    transform: scale(1.0);
 }
   

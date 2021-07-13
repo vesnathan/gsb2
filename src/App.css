@@ -5,6 +5,7 @@
 body {
   background-color: rgba(112,112,112,1);
 }
+
 .mainContainer {
   width: 70%;
   margin: auto;
@@ -12,13 +13,13 @@ body {
 }
 
 .mainButtonContainer {
-  
   background: rgba(239,103,103,1);
   min-height: 100px;
 }
+
 .secondaryButtons {
   background: rgba(255,209,101,1);
-  min-height: 100px;
+  min-height: 400px;
 }
 
 .controlButtons {
@@ -31,14 +32,17 @@ body {
   min-height: 100px; 
   height: 100%;
 }
+
 .greyBar {
   background: rgba(139, 139, 139,1);
   min-height: 100px; 
 }
+
 .darkBlueButton {
   background: rgba(111, 154, 188,1);
   min-height: 100px; 
 }
+
 .lightBlueButton {
   background: rgba(97, 213, 250,1);
   min-height: 100px; 

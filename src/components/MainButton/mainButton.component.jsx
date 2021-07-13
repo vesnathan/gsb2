@@ -2,16 +2,24 @@ import React from 'react';
 import './mainButton.component.css';
 
 
-const handleMainButtonClick = (e) => {
-    console.log(e.target.id)
-    
-  }
+
 
 const MainButton = (props) => (
-    <div id={'mainButtonDiv-'+props.mainButtonId} className={"mainButton" + ((props.mainButtonSelected===props.mainButtonId) ? ' active':'') } onClick={(e) => handleMainButtonClick(e)} >
-        <img id={'mainButtonImg-'+props.mainButtonId} alt={props.mainButtonText +' icon'} src={props.mainButtonIcon} />
-        <p id={'mainButtonName-'+props.mainButtonId} >{props.mainButtonText}</p>
+
+    <div tabIndex   = "0" 
+         key        = { props.mainButtonText +' div' }
+         onClick    = { () => props.setMainButtonActive(props.mainButtonId)} 
+         className  = { "mainButton" + ((props.mainButtonSelected===props.mainButtonId) ? ' active':'') }  >
+
+        <img key    = { props.mainButtonText +' icon' }
+             alt    = { props.mainButtonText +' icon' } 
+             src    = { props.mainButtonIcon } />
+
+        <p   key    = { props.mainButtonText +' para' } >
+                      { props.mainButtonText.toUpperCase() }</p>
+
     </div>
+
 );
 
 export default MainButton;

@@ -1,52 +1,64 @@
-import React from 'react';
-import Grid from '@material-ui/core/Grid'
-import Hidden from '@material-ui/core/Hidden';
-import './App.css';
-import MainButton from './components/MainButton/mainButton.component.jsx';
-import PlayersIcon from './images/icons/players.png';
-import SettingsIcon from './images/icons/settings.png';
-import ScoringIcon from './images/icons/scoring.png';
-import SaveIcon from './images/icons/save.png';
-import LoadIcon from './images/icons/load.png';
-import ButtonsIcon from './images/icons/buttons.png';
-import Player from './components/Player/Player.component.jsx';
+import React, { useState }  from 'react';
+import Grid                 from '@material-ui/core/Grid'
+import Hidden               from '@material-ui/core/Hidden';
+import                         './App.css';
 
+import addPlayerIcon        from './images/icons/addPlayer.png';
+import deletePlayerIcon     from './images/icons/deletePlayer.png';
+import PlayersIcon          from './images/icons/players.png';
+import SettingsIcon         from './images/icons/settings.png';
+import ScoringIcon          from './images/icons/scoring.png';
+import SaveIcon             from './images/icons/save.png';
+import LoadIcon             from './images/icons/load.png';
+import ButtonsIcon          from './images/icons/buttons.png';
+import MainBg               from './images/background/bg.jpg';
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      players: [
-        { id: 0, name: "Team 1", score: 0, background: '' },
-        { id: 1, name: "Team 2", score: 0, background: '' },
-        { id: 2, name: "Team 3", score: 0, background: '' },
-        { id: 3, name: "Team 4", score: 0, background: '' },
-        { id: 4, name: "Team 5", score: 0, background: '' },
-        { id: 5, name: "Team 6", score: 0, background: '' },
-        { id: 6, name: "Team 7", score: 0, background: '' },
-        { id: 7, name: "Team 8", score: 0, background: '' },
-        { id: 8, name: "Team 9", score: 0, background: '' }
-      ],
-      settings: {
-        mainButtonSelected: 0,
-        playerButtonSelected: 0,
+import MainButton           from './components/mainButton/mainButton.component.jsx';
+import Player               from './components/player/player.component.jsx';
+import PlayerSettings       from './components/playerSettings/playerSettings.component.jsx';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-      },
-      mainButtons: [
-        { id: 0, text: 'PLAYERS',  icon: PlayersIcon },
-        { id: 1, text: 'SCORING',  icon: ScoringIcon },
-        { id: 2, text: 'BUTTONS',  icon: ButtonsIcon },
-        { id: 3, text: 'SETTINGS',  icon: SettingsIcon },
-        { id: 4, text: 'SAVE',  icon: SaveIcon },
-        { id: 5, text: 'LOAD',  icon: LoadIcon }
-      ]
-    }
-    
+const App = () => {
+
+  const players = [
+    { id: 0, name: "Beer Make Smart",   score: 0, background: '' },
+    { id: 1, name: "Hot Load of Quiz",  score: 0, background: '' },
+    { id: 2, name: "Not That",          score: 0, background: '' },
+    { id: 3, name: "Team 4",            score: 0, background: '' }
+  ];
+
+  const [mainButtonSelected, setMainButtonSelected] = useState(null);
+  const [playerButtonSelected, setPlayerButtonSelected] = useState(null);
+
+  const mainButtons = [
+    { id: 0, text: 'players',   icon: PlayersIcon },
+    { id: 1, text: 'scoring',   icon: ScoringIcon },
+    { id: 2, text: 'buttons',   icon: ButtonsIcon },
+    { id: 3, text: 'settings',  icon: SettingsIcon },
+    { id: 4, text: 'save',      icon: SaveIcon },
+    { id: 5, text: 'load',      icon: LoadIcon }
+  ];
+
+  const controlButtons = [
+    { id: 0, text: 'addPlayer',     mainButtonAssociation: 0,     icon: addPlayerIcon },
+    { id: 1, text: 'deletePlayer',  mainButtonAssociation: 0,     icon: deletePlayerIcon }
+  ];
+  function setPlayerButtonActive(value){
+    setPlayerButtonSelected(value);
   }
-  
-  render() {
-    return(
-  
+  function setMainButtonActive(value){
+    if (value === 0) { // players button
+      setPlayerButtonSelected(null);
+    }
+    setMainButtonSelected(value);
+  }
+  return (
+    <Router>
       <div className="mainContainer">
         <Grid container>
           <Grid item={true} xs={12} sm={4}> 
@@ -54,71 +66,118 @@ class App extends React.Component {
               <Hidden smDown>    
                   <Grid container >
                     {
-                      this.state.mainButtons.map(button => (
-                        <Grid item={true} xs={4} sm={12} md={6} lg={4} xl={3}>
-                          <MainButton key={'mainButton-'+button.id} mainButtonId={button.id} mainButtonText={button.text} mainButtonSelected={this.state.settings.mainButtonSelected} mainButtonIcon={button.icon} />
+                      mainButtons.map(button => (
+                        <Grid           item=                 { true } 
+                                        xs=                   { 4 } 
+                                        sm=                   { 12 } 
+                                        md=                   { 6 } 
+                                        lg=                   { 4 } 
+                                        xl=                   { 3 } 
+                                        key=                  { 'mainButtonGrid-'+button.id } >
+
+                          <Link         key=                  { 'mainButtonLink-'+button.id } 
+                                        to=                   { '/'+button.text } >
+
+                            <MainButton key=                  { 'mainButton-'+button.id } 
+                                        setMainButtonActive = { setMainButtonActive } 
+                                        mainButtonId=         { button.id } 
+                                        mainButtonText=       { button.text } 
+                                        mainButtonSelected=   { mainButtonSelected } 
+                                        mainButtonIcon=       { button.icon }/>
+                                       
+                          </Link> 
                         </Grid>
-                      ))
+                      )) 
                     }
                   </Grid>
               </Hidden>
               <Hidden mdUp>
-Main Buttons Drop Down
+                Main Buttons Drop Down
               </Hidden>
             </div>
             <Grid  item={true} xs={12}  >
+              
               <div className="secondaryButtons">
+              <Route path="/players">
+                <Hidden mdDown>
+                  <Grid container>
+                    {
+                      players.map(player => (
+                        <Grid       key=                      { 'playerButtonLink-'+player.id } 
+                                    item=                     { true } 
+                                    xs=                       { 4 } 
+                                    sm=                       { 12 } 
+                                    md=                       { 6 } 
+                                    lg=                       { 4 } 
+                                    xl=                       { 3 }  >
+
+                          <Link     key=                      { 'playerButtonLink-'+player.id } 
+                                    to=                       { '/players/player'+player.id }>
+
+                            <Player key=                      { 'playerButton-'+player.id } 
+                                    setPlayerButtonActive =   { setPlayerButtonActive } 
+                                    playerButtonId=           { player.id } 
+                                    playerButtonName=         { player.name } 
+                                    playerButtonSelected=     { playerButtonSelected } 
+                                    playerBackground=         { player.background }/>
+
+                          </Link>
+                        </Grid>
+                      ))
+                    }
+                  </Grid>
+                </Hidden>
+                <Hidden lgUp>
+                  Players Drop Down
+                </Hidden>
+                </Route>
+              </div>
+            </Grid>
+          </Grid>  
+          <Grid                     item=       { true } 
+                                    xs=         { 12 } 
+                                    sm=         { 8 } >
+            <div className="mainPage">
+              {
+                players.map(player => (
+                <Route              path=       { '/players/player'+player.id } 
+                                    key=        { 'playerSettingsRoute-'+player.id }>
+
+                    <PlayerSettings key=        { 'playerSettings-'+player.id } 
+                                    playerId =  { player.id } /> 
+                </Route>  
+                ))
+              }       
+            </div>      
+          </Grid>
+          <Grid  item={true} xs={12} sm={4} >
+            <div className="controlButtons">
+
+            </div>
+          </Grid>
+          <Hidden xsDown>
+            <Grid  item={true} xs={12} sm={4} lg={6}>
+              <div className="greyBar">
 
               </div>
             </Grid>
-          </Grid>
-          
-          <Grid  item={true} xs={12} sm={8}>
-          
-            <div className="mainPage">
-              <Hidden smDown> 
-                <Grid container>
-                {
-                  this.state.players.map(player => (
-                    <Grid item={true} xs={4} sm={4} md={2} lg={2} xl={2}>
-                      <Player key={'playerButton-'+player.id} playerButtonId={player.id} playerButtonName={player.name} playerButtonSelected={this.state.settings.playerButtonSelected} playerBackground={player.background}/>
-                    </Grid>
-                  ))
-                }
-                </Grid>
-              </Hidden>              
-              <Hidden mdUp>
-Players Drop Down
-              </Hidden>
-            </div>
-            
-          </Grid>
-            <Grid  item={true} xs={12} sm={4} >
-              <div className="controlButtons">
+            <Grid  item={true} xs={12} sm={2}  lg={1}>
+              <div className="darkBlueButton">
 
-                </div>
+              </div>
             </Grid>
-            <Hidden xsDown>
-              <Grid  item={true} xs={12} sm={4} lg={6}>
-                <div className="greyBar">
+            <Grid  item={true} xs={12} sm={2}  lg={1}>
+              <div className="lightBlueButton">
 
-                  </div>
-              </Grid>
-              <Grid  item={true} xs={12} sm={2}  lg={1}>
-                <div className="darkBlueButton">
-
-                  </div>
-              </Grid>
-              <Grid  item={true} xs={12} sm={2}  lg={1}>
-                <div className="lightBlueButton">
-
-                  </div>
-              </Grid>
-            </Hidden>
+              </div>
+            </Grid>
+          </Hidden>
         </Grid>
       </div>
-  
-    )
+      </Router>
+    ) 
   }
-}
+
+
 export default App;
+

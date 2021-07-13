@@ -1,46 +1,53 @@
-.mainButton{
-    background:   rgba(239,103,103,1);
-    display: inline-block;
-    width: 100%;
-    min-height: 100px; 
-    outline: 1px solid rgb(253, 123, 123);
-    color:rgba(255,255,255,.5);
-    text-align: center;
-    vertical-align: center;
-    -moz-transition: all .2s ease-in;
-    -o-transition: all .2s ease-in;
-    -webkit-transition: all .2s ease-in;
-    transition: all .2s ease-in;
+.mainButton {
+    width:                  100%; 
+    min-height:             100px;
+    display:                inline-block; 
+    color:                  rgba(255,255,255,1);
+    outline:                1px solid rgb(240, 110, 110);
+    text-align:             center;
+    vertical-align:         center;
+    box-sizing:             border-box;
+    cursor:                 pointer;
+    opacity:                50%;
+
+    -moz-transition:        all .2s ease-in;
+    -o-transition:          all .2s ease-in;
+    -webkit-transition:     all .2s ease-in;
+    transition:             all .2s ease-in;
+}
+
+.mainButton:focus-visible {
+    outline:                none;
+}
+
+.mainButton:hover,
+.mainButton.active,
+.mainButton:focus-visible {
+    background:             rgba(241, 108, 108, 1);
+    color:                  rgba(255,255,255,1);
+    outline:                1px solid rgb(238, 143, 143);
+    opacity:                100%;
 }
 
 .mainButton img {
-    width: 70px;
-    display: block;
-    opacity: 50%;
-    padding-top: 10px;
-    margin: auto;
-    -moz-transition: all .2s ease-in;
-    -o-transition: all .2s ease-in;
-    -webkit-transition: all .2s ease-in;
-    transition: all .2s ease-in;
-}
-  
-.mainButton:hover {
-    background:   rgba(241, 108, 108, 1);
-    color:        rgba(255,255,255,1);
+    transform:              scale(.9);
+    width:                  70px;
+    display:                block;
+    opacity:                50%;
+    padding-top:            10px;
+    margin:                 auto;
+    
+    -moz-transition:        all .2s ease-in;
+    -o-transition:          all .2s ease-in;
+    -webkit-transition:     all .2s ease-in;
+    transition:             all .2s ease-in;
 }
 
-.mainButton:hover img {
-    opacity: 100%;
-    transform: scale(1.1);
-}
+.mainButton:focus-visible img,
+.mainButton:hover img,
 .mainButton.active img {
-    opacity: 100%;
-    
-    transform: scale(1.1);
+    opacity:                100%;
+    transform:              scale(1.0);
 }
-  
-.mainButton.active {
-    background:   rgb(243, 115, 115);
-    color:        rgba(255,255,255,1);
-}
+
+

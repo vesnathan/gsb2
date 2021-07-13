@@ -1,13 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PlayerIcon from '../../images/icons/player.png';
-import './Player.component.css';
+import './player.component.css';
+
 
 const Player = (props) => {
+    
+    const [playerName, setPlayerName] = useState(props.playerButtonName.toUpperCase());
+
     return (
-        <div id={ 'playerButtonDiv-'+props.playerButtonId } className={'playerButton' + (props.playerButtonSelected === props.playerButtonId ? ' active':'')}>
-            <img id={ 'playerButtonImg-'+props.playerButtonId } alt={props.playerButtonName + ' Settings'} src={props.playerBackground === ''  ? PlayerIcon : props.playerBackground} />
-            <p id={ 'playerButtonName-'+props.playerButtonId }>{props.playerButtonName}</p> 
+
+        <div tabIndex   = "0" 
+             key        = { props.playerButtonName + ' Settings' }  
+             onClick    = { () => props.setPlayerButtonActive(props.playerButtonId) } 
+             className  = { 'playerButton' + (props.playerButtonSelected === props.playerButtonId ? ' active':'') }>
+
+            <img
+                 key    = { props.playerButtonName + ' Settings' } 
+                 alt    = { props.playerButtonName + ' Settings' } 
+                 src    = { PlayerIcon } />
+
+            <p   key    = { props.playerButtonName + ' para' } >           
+                          { playerName }</p> 
+            
         </div>
+
     );
 };
 
