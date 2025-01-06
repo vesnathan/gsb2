@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import PlayerIcon from '../../images/icons/player.png';
-import './player.component.css';
+import './Player.component.css';
 
 
 const Player = (props) => {

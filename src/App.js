@@ -13,8 +13,8 @@ import LoadIcon             from './images/icons/load.png';
 import ButtonsIcon          from './images/icons/buttons.png';
 import MainBg               from './images/background/bg.jpg';
 
-import MainButton           from './components/mainButton/mainButton.component.jsx';
-import Player               from './components/player/player.component.jsx';
+import MainButton           from './components/MainButton/mainButton.component.jsx';
+import Player               from './components/Player/Player.component.jsx';
 import PlayerSettings       from './components/playerSettings/playerSettings.component.jsx';
 import {
   BrowserRouter as Router,
